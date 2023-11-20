@@ -1,0 +1,41 @@
+POM Framework
+
+Pages: including page -By locators and page actions
+Package:com.qa.erail.pages
+Location : src/main/java
+erailHomePage.java
+
+Package: com.qa.erail.tests
+Tests : BaseTest class, Test classes
+BaseTest.java -includes pre and post condition for each test class, utilizes driverfactory methods to init driver and properties
+Testclasses: HomePageTest.java,DropDownSelByIndex,CompareListResultsWithExcel
+
+src/main/java
+Package:com.qa.erail.factory
+Location :src/main/java
+DriverFactory.java, OptionsManager.java
+
+Test classes makes use of various utilities defined under package com.qa.erail.utils
+Package : com.qa.erail.utils
+Location : src/test/java
+ElementUtil - utilities func are defined here
+ExcelUtil - read and write functions are defined
+Constants- maintains list of constants
+JavaScriptUtil - JavaScriptExecutor Utilities
+
+ExtentReport
+Package : com.qa.erail.listeners
+location : src/main/java
+
+Location : src/test/resource 
+Folder :Config - that hold config properties for various env
+Folder : testdata - excel file
+Folder testrunner - XML file - to run the test
+
+
+
+The tests are usually performed from CMD using the Maven Surefire plug-in; however, the implementation is absent in the frameork because my system has a different version of Java installed. 
+
+
+
+
