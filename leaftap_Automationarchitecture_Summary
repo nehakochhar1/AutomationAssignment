@@ -1,0 +1,19 @@
+
+Architecture summary (short)
+This workspace is a Java + Maven automation framework built around TestNG + Selenium 4 using a Page Object Model (POM) and a custom Selenium wrapper.
+* Core wrapper layer (com.framework.selenium.api.base)
+    * SeleniumBase is the main implementation of your automation API. It wraps WebDriver actions (locate, click, type, select, waits, alerts/windows/frames, screenshots) and standardizes error handling + logging.
+    * DriverInstance (paired with it) is responsible for creating/storing the WebDriver instance and exposing getDriver() / wait objects.
+* Contracts / design layer (com.framework.selenium.api.design)
+    * Browser and Element are interfaces that define what operations the framework supports (browser lifecycle, locate, element actions, verifications).
+    * Locators is an enum abstraction for locator types (ID/XPATH/CSS/etc.).
+    * SeleniumBase implements these interfaces.
+* Reporting + utilities (com.framework.utils)
+    * Reporter centralizes ExtentReports-style logging (reportStep, node management, screenshot folder).
+    * DataLibrary reads Excel test data (Apache POI) and feeds TestNG data providers.
+* Test base layer (com.framework.testng.api.base)
+    * ProjectSpecificMethods extends SeleniumBase and provides @BeforeMethod (start app + set reporting node), @AfterMethod (close), and a shared @DataProvider (fetchData) that pulls from Excel.
+* Application layer (POM)
+    * Page classes in com.leaftaps.pages extend ProjectSpecificMethods, so they directly use wrapper methods like locateElement, clearAndType, click, selectDropDownUsingText.
+    * Test cases in com.leaftaps.testcases call page methods to perform flows (e.g., create lead/contact).
+In short: Tests → Page Objects → SeleniumBase wrappers → WebDriver (DriverInstance) + Reporting (Reporter) + Data (DataLibrary).
