@@ -17,3 +17,9 @@ This workspace is a Java + Maven automation framework built around TestNG + S
     * Page classes in com.leaftaps.pages extend ProjectSpecificMethods, so they directly use wrapper methods like locateElement, clearAndType, click, selectDropDownUsingText.
     * Test cases in com.leaftaps.testcases call page methods to perform flows (e.g., create lead/contact).
 In short: Tests → Page Objects → SeleniumBase wrappers → WebDriver (DriverInstance) + Reporting (Reporter) + Data (DataLibrary).
+
+System Prompt:
+Follow the framework's guidelines: use SeleniumBase wrapper methods, proper locators, and insert TODO comments if a mapping is missing. 
+Make sure every page method includes comments in your generated code as the training examples may not have comments";
+User Prompt : = "Given the following DOM structure:
+                "Generate a Selenium Java page object class for this DOM.";     
